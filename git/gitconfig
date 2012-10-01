@@ -1,6 +1,6 @@
 [user]
-	name = Konstantin Bukley
-	email = madundead@gmail.com
+	name = Nickolay Kondratenko
+	email = devmarkup@gmail.com
 
 [color]
 	diff = auto
@@ -15,18 +15,25 @@
 [alias]
 	a = add
 	b = branch
+	bd = branch -D
 	c = commit -m
 	d = diff
 	f = fetch
+	fo = fetch origin
 	g = grep
 	l = log
 	m = merge
 	co = checkout
+	cb = checkout -b
 	p = pull
 	r = remote
 	s = status
 
 	st = status -sb
+
+	sa = stash
+	sp = stash pop
+	sl = stash list
 
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	lc = log ORIG_HEAD.. --stat --no-merges
@@ -46,10 +53,6 @@
 	uncommit = !git reset --soft HEAD^
 	unadd = !git reset HEAD
 	unstage = !git reset HEAD
-
-	# awesome shit
-	# Paul Engemann – Push It To The Limit
-	epic-push = !mpg123 -q ~/.resources/sounds/pitl.mp3 > /dev/null & git push
 
 [push]
 	default = current

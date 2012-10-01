@@ -1,7 +1,7 @@
 " My .vimrc file
 "
-" Author: Konstantin Bukley <madundead@gmail.com>
-" Raw version: http://raw.github.com/madundead/stuff/master/vim/vimrc
+" Author: Nickolay Kondratenko <devnarkup@gmail.com>
+" Raw version: http://raw.github.com/kont-noor/stuff/master/vim/vimrc
 "
 " Inspired by:
 " Vincent Driessen <vincent@datafox.nl> 
@@ -35,6 +35,9 @@ set history=500
 
 " includes ftplugin.vim which is responsible for filetype detection
 filetype plugin on
+
+" turn indent depend on filetype
+filetype plugin indent on
 
 " set syntax highlighting
 syntax on
@@ -96,19 +99,10 @@ set showcmd
 set ruler
 " show title in console status bar
 set title
-" dont wrap lines
-set nowrap
 " when I scroll up or down, there are 2 lines between the line I'm on and the bottom or top of the screen. 
 set scrolloff=5
 " how many tenths of a second to blink on matching brackets
 set mat=2
-
-" put NERDTree on the right. just because I can
-let NERDTreeWinPos = "right"
-" remove 'press ? for help' and .. (up on one dir)
-let NERDTreeMinimalUI = 1
-" replace ugly + with fancy arrows
-let NERDTreeDirArrows = 1
 
 
 " ========================================================
@@ -178,6 +172,9 @@ if has("autocmd")
   " *.haml => haml
   autocmd BufNewFile,BufRead *.haml set filetype=haml
 
+  " feature => ruby
+  autocmd BufNewFile,BufRead *.feature setlocal filetype=ruby
+
   " Gemfile => ruby
   autocmd BufNewFile,BufRead Gemfile,Vagrantfile setlocal filetype=ruby
 
@@ -234,7 +231,7 @@ else " no gui
   endif
 endif
 
-" swtich between buffers by arrows (that's not nice at all)
+" swtich between buffers by arrows
 nmap <silent> <Up> :wincmd k<CR>
 nmap <silent> <Down> :wincmd j<CR>
 nmap <silent> <Left> :wincmd h<CR>
@@ -294,17 +291,20 @@ nmap <silent> <S-Tab> :tabprevious<CR>
 " remove search highlight
 nmap <silent> <C-N> :silent noh<CR>
 
-" use the damn hjkl keys
-" fucking smart!
-" map <up> <nop>
-" map <down> <nop>
-" map <left> <nop>
-" map <right> <nop>
-
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 map N Nzz
 map n nzz
+
+" Disable fucking paste by accidental wheel click
+map <MiddleMouse> <Nop>
+imap <MiddleMouse> <Nop>
+map <2-MiddleMouse> <Nop>
+imap <2-MiddleMouse> <Nop>
+
+" Smart home button
+noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+imap <silent> <Home> <C-O><Home>
 
 " mode indication - prominent!
 function! InsertStatuslineColor(mode)
