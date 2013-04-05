@@ -8,6 +8,8 @@ export EDITOR="vim"
 
 # Aliases
 alias be="bundle exec"
+alias bi="bundle install"
+alias bu="bundle update"
 alias dspace="df -h -T"
 alias v="vim"
 
@@ -23,5 +25,5 @@ unsetopt correct_all
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 # Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/madundead/.rvm/bin:/home/madundead/.rvm/bin
+export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/nickolay/.rvm/bin:/home/nickolay/.rvm/bin
 unsetopt correct_all
