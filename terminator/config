@@ -1,4 +1,5 @@
 [global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   handle_size = 1
   close_button_on_tab = False
   tab_position = bottom
@@ -11,11 +12,15 @@
   new_tab = <Ctrl>T
 [profiles]
   [[default]]
-    login_shell = True
     scrollbar_position = hidden
-    font = Inconsolata Medium 11
-    cursor_shape = ibeam
+    login_shell = True
+    custom_command = /usr/bin/zsh
+    background_type = transparent
+    use_custom_command = True
     show_titlebar = False
+    background_darkness = 0.83
+    cursor_shape = ibeam
+    font = Inconsolata Medium 11
 [layouts]
   [[default]]
     [[[child1]]]
