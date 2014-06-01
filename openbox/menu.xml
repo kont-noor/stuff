@@ -6,11 +6,20 @@
                 file:///usr/share/openbox/menu.xsd">
 
 <menu id="root-menu" label="Openbox 3">
-  <item label="WEB BROWSER">
+  <item label="Chromium">
     <action name="Execute"><execute>chromium-browser</execute></action>
   </item>
+  <item label="Firefox">
+    <action name="Execute"><execute>firefox</execute></action>
+  </item>
+  <item label="Thunderbird">
+    <action name="Execute"><execute>thunderbird</execute></action>
+  </item>
+  <item label="Terminator">
+    <action name="Execute"><execute>terminator</execute></action>
+  </item>
   <item label="FILE BROWSER">
-    <action name="Execute"><execute>nautilus</execute></action>
+    <action name="Execute"><execute>thunar</execute></action>
   </item>
   <item label="Toggle Decorate">
     <action name="ToggleDecorations"/>
@@ -21,6 +30,9 @@
   <separator />
   <item label="SUSPEND">
     <action name="Execute"><execute>gdm-control --suspend</execute></action>
+  </item>
+  <item label="Log Out">
+    <action name="Execute"><execute>openbox --exit</execute></action>
   </item>
 </menu>
 
