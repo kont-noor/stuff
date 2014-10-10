@@ -20,6 +20,7 @@
 	d = diff
 	f = fetch
 	fo = fetch origin
+	ff = pull --ff-only
 	g = grep
 	l = log
 	m = merge
@@ -56,3 +57,5 @@
 
 [push]
 	default = current
+[init]
+	templatedir = ~/.git

@@ -12,13 +12,14 @@
   new_tab = <Ctrl>T
 [profiles]
   [[default]]
-    scrollbar_position = hidden
+    background_image = None
     login_shell = True
-    custom_command = /usr/bin/zsh
+    background_darkness = 0.97
     background_type = transparent
+    scrollbar_position = hidden
     use_custom_command = True
     show_titlebar = False
-    background_darkness = 0.83
+    custom_command = /usr/bin/zsh
     cursor_shape = ibeam
     font = Inconsolata Medium 11
 [layouts]

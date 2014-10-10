@@ -21,6 +21,8 @@
 " -> General
 " ========================================================
 
+set colorcolumn=100
+
 " turn off vi-compatible mode
 if &compatible
   set nocompatible
@@ -185,6 +187,9 @@ if has("autocmd")
   " HAML
   autocmd FileType haml setlocal autoindent expandtab shiftwidth=2 softtabstop=2
 
+  " jade
+  autocmd FileType jade setlocal autoindent expandtab shiftwidth=2 softtabstop=2
+
   augroup html_files "{{{
     au!
     " TODO: make closetag here
@@ -204,6 +209,7 @@ if has("autocmd")
 
   augroup javascript_files "{{{
     au!
+    autocmd filetype js,coffee setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 tabstop=2
   augroup end "}}}
 endif
 
