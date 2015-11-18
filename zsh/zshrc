@@ -30,3 +30,5 @@ unsetopt correct_all
 unsetopt correct_all
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$HOME/.android_sdk/tools:$PATH
+PATH=$HOME/Downloads/node-webkit-v0.11.6-osx-x64/node-webkit.app/Contents/MacOS:$PATH

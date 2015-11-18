@@ -254,9 +254,6 @@ cnoremap <C-E> <End>
 " ; = :
 nnoremap ; :
 
-" close buffer by Q
-nmap Q :q!<CR>
-
 " new tab by F1
 nmap <F1> :tabnew<CR>
 imap <F1> <ESC> :tabnew<CR>
