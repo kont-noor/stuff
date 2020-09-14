@@ -1,25 +1,21 @@
-" My .vimrc file
-"
-" Author: Nickolay Kondratenko <devnarkup@gmail.com>
-" Raw version: http://raw.github.com/kont-noor/stuff/master/vim/vimrc
-"
-" Inspired by:
-" Vincent Driessen <vincent@datafox.nl> 
-" https://raw.github.com/nvie/vimrc/master/vimrc
-"
-" amix the lucky stiff
-" http://amix.dk/vim/vimrc.html
-"
-" Colorscheme:
-" Ethan Schoonover
-" https://github.com/altercation/solarized
-"
-" Feel free to use, modify or share this file 
+" ------------ Vundle --------------------
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" ========================================================
-" -> General
-" ========================================================
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'leafgarland/typescript-vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" ---------- End vundle -----------------
 
 set colorcolumn=100
 
@@ -180,6 +176,10 @@ if has("autocmd")
   " Gemfile => ruby
   autocmd BufNewFile,BufRead Gemfile,Vagrantfile setlocal filetype=ruby
 
+  " Gemfile => javascript
+  autocmd BufNewFile,BufRead *.js setlocal filetype=javascript
+
+
   " Filetype rules:
   " YAML
   autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
@@ -209,8 +209,10 @@ if has("autocmd")
 
   augroup javascript_files "{{{
     au!
-    autocmd filetype js,coffee setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 tabstop=2
+    autocmd filetype javascript,js,coffee setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
   augroup end "}}}
+
+  "autocmd Filetype javascript setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 endif
 
 
@@ -334,3 +336,36 @@ inoremap <c-c> <c-o>:call InsertLeaveActions()<cr><c-c>
 
 " default the statusline to green when entering Vim
 hi statusline guibg=green
+
+" Find file in current directory and edit it.
+function! Find(name)
+  let l:list=system("find . -name '".a:name."' | perl -ne 'print \"$.\\t$_\"'")
+" replace above line with below one for gvim on windows
+" let l:list=system("find . -name ".a:name." | perl -ne \"print qq{$.\\t$_}\"")
+  let l:num=strlen(substitute(l:list, "[^\n]", "", "g"))
+  if l:num < 1
+    echo "'".a:name."' not found"
+    return
+  endif
+  if l:num != 1
+    echo l:list
+    let l:input=input("Which ? (CR=nothing)\n")
+    if strlen(l:input)==0
+      return
+    endif
+    if strlen(substitute(l:input, "[0-9]", "", "g"))>0
+      echo "Not a number"
+      return
+    endif
+    if l:input<1 || l:input>l:num
+      echo "Out of range"
+      return
+    endif
+    let l:line=matchstr("\n".l:list, "\n".l:input."\t[^\n]*")
+  else
+    let l:line=l:list
+  endif
+  let l:line=substitute(l:line, "^[^\t]*\t./", "", "")
+  execute ":e ".l:line
+endfunction
+command! -nargs=1 Find :call Find("<args>")

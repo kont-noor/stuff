@@ -11,6 +11,7 @@
 [core]
 	editor = vim
 	pager = less -R
+	excludesfile = /Users/kont/.gitignore_global
 
 [alias]
 	a = add
@@ -59,3 +60,12 @@
 	default = current
 [init]
 	templatedir = ~/.git
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	required = true
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff

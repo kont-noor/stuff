@@ -10,8 +10,6 @@ export EDITOR="vim"
 alias be="bundle exec"
 alias bi="bundle install"
 alias bu="bundle update"
-alias dspace="df -h -T"
-alias v="vim"
 
 # Settings
 setopt autocd
@@ -22,13 +20,19 @@ plugins=(git nyan)
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
 # Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/nickolay/.rvm/bin:/home/nickolay/.rvm/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 unsetopt correct_all
 unsetopt correct_all
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$HOME/.android_sdk/tools:$PATH
 PATH=$HOME/Downloads/node-webkit-v0.11.6-osx-x64/node-webkit.app/Contents/MacOS:$PATH
+PATH=/usr/local/go/bin:$PATH
+export PATH="$PATH:/usr/local/gcc_arm/gcc-arm-none-eabi-5_4-2016q3/bin/"
+
+[[ -f /Users/kont/.sentinel/current/bin/sentinel ]] && eval "$(/Users/kont/.sentinel/current/bin/sentinel init -)"
+
+eval "$(rbenv init -)"
+
+export PATH="$HOME/.yarn/bin:$PATH"
